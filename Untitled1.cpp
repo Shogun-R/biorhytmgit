@@ -3,6 +3,7 @@
 
 using namespace std;
 
+float DateCalc(int currentYear, int yearOfBirth);
 
 struct Date
 {
@@ -13,8 +14,11 @@ struct Date
 
 int main()
 {
+	const int YEAR_CONST = 1900;
+	const int MONTH_CONST = 1;
 	time_t t = time(0);
 	tm* now = localtime(&t);
+	int currentYear = YEAR_CONST + now->tm_year;
 	
 	cout<<"Provide your birth date in dd/mm/yy format"<<endl;
 	cout<<"Day of birth: ";
@@ -25,11 +29,11 @@ int main()
 	cin>>date_of_birth.year;
 	cout<<endl;
 	
-   cout << "Year:" << 1900 + now->tm_year<<endl;
-   cout << "Month: "<< 1 + now->tm_mon<< endl;
+   cout << "Year:" << YEAR_CONST + now->tm_year<<endl;
+   cout << "Month: "<< MONTH_CONST + now->tm_mon<< endl;
    cout << "Day: "<< now->tm_mday << endl;
-   cout << "Time: "<< 5+now->tm_hour << ":";
-   cout << 30+now->tm_min << ":";
+   cout << "Time: "<< now->tm_hour << ":";
+   cout << now->tm_min << ":";
    cout << now->tm_sec << endl;
    
    
@@ -37,3 +41,8 @@ int main()
    
    return 0;
 }
+
+/*float DateCalc(int currentYear, int yearOfbirth)
+{
+	
+}*/
