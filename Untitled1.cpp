@@ -112,9 +112,11 @@ void CycleCalc()
 	
 	cout<<endl<<xpercentage;
 	
-	numberOfFullCycles = round(calcYearDays / bioCycle);
+	numberOfFullCycles = floor((calcYearDays + ageDays.addedDays) / bioCycle);
 	
-	dayOfCycle = calcYearDays - (numberOfFullCycles * bioCycle);
+	dayOfCycle = (calcYearDays + ageDays.addedDays) - (numberOfFullCycles * bioCycle);
 	
 	cout<<endl<<dayOfCycle;
+	
+	
 }
