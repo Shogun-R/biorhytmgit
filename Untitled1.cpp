@@ -49,7 +49,7 @@ int main()
    cout << now->tm_sec << endl;
    
    cout<<"Full days in your birth date to current date difference: "<<DateCalc(currentYear, date_of_birth.year);
-   test();
+   CycleCalc();
    
    return 0;
 }
