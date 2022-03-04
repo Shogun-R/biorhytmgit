@@ -5,7 +5,7 @@
 using namespace std;
 
 float DateCalc(int currentYear, int yearOfBirth);
-void test();
+void CycleCalc();
 
 struct Date
 {
@@ -72,7 +72,7 @@ stof - string to float
 	Algorhytm for farther calcs year difference between year of birth and current year - full cycle of biorhytm to determine the current cycle day
 */
 
-void test()
+void CycleCalc()
 {
 	time_t now = time(0);
 	tm *ltm = localtime(&now);
