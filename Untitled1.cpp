@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <cmath>
 
 using namespace std;
 
@@ -11,7 +12,16 @@ struct Date
 	int day;
 	int month;
 	int year;
+	
 }date_of_birth;
+
+struct Days //fullDays is for full number of days in one's age | addedDays is for additional days of the long years 
+{
+	int fullDays;
+	int addedDays;	
+	int completeDays;
+	
+}ageDays;
 
 int main()
 {
@@ -46,15 +56,14 @@ int main()
 
 float DateCalc(int currentYear, int yearOfBirth)
 {
-	int fullDays, addedDays; //fullDays is a variable for amount of days pass from birth to current time | addedDays is for long years
-	int yearDifference, completeDays;
+	int yearDifference;
 	
 	yearDifference = currentYear - yearOfBirth;
-	fullDays = yearDifference * 365;
-	addedDays = yearDifference / 4;
-	completeDays = fullDays + addedDays;
+	ageDays.fullDays = yearDifference * 365;
+	ageDays.addedDays = yearDifference / 4;
+	ageDays.completeDays = ageDays.fullDays + ageDays.addedDays;
 	
-	return completeDays;
+	return ageDays.completeDays;
 }
 
 
@@ -73,7 +82,7 @@ void test()
 	int currentYear, currentMonth, currentDay;
 	int calcYear, calcMonth, calcDay;
 	float calcYearDays, bioCycle = 23.0f, bioHalf = 11.5f;
-	float halfCycles;
+	float halfCycles, numberOfFullCycles, dayOfCycle;
 	
 	
 	currentYear = YEAR_BASE + ltm->tm_year;
@@ -82,10 +91,11 @@ void test()
 	
 	calcYear = currentYear - date_of_birth.year;
 	
-	cout<<endl<<currentYear
+/*	cout<<endl<<currentYear
 		<<endl<<currentMonth
 		<<endl<<currentDay<<endl;
-		
+	*/
+	cout<<endl;	
 	calcYearDays = calcYear * 365;
 	
 	halfCycles = calcYearDays / bioHalf;
@@ -101,4 +111,10 @@ void test()
 	xpercentage = (testday * fullpercentage) / bioHalf;
 	
 	cout<<endl<<xpercentage;
+	
+	numberOfFullCycles = round(calcYearDays / bioCycle);
+	
+	dayOfCycle = calcYearDays - (numberOfFullCycles * bioCycle);
+	
+	cout<<endl<<dayOfCycle;
 }
