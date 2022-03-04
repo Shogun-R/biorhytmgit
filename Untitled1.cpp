@@ -4,6 +4,7 @@
 using namespace std;
 
 float DateCalc(int currentYear, int yearOfBirth);
+void test();
 
 struct Date
 {
@@ -38,7 +39,7 @@ int main()
    cout << now->tm_sec << endl;
    
    cout<<"Full days in your birth date to current date difference: "<<DateCalc(currentYear, date_of_birth.year);
-   
+   test();
    
    return 0;
 }
@@ -58,5 +59,41 @@ float DateCalc(int currentYear, int yearOfBirth)
 
 
 /*
+stof - string to float
 	Algorhytm for farther calcs year difference between year of birth and current year - full cycle of biorhytm to determine the current cycle day
 */
+
+void test()
+{
+	time_t now = time(0);
+	tm *ltm = localtime(&now);
+
+	
+	int YEAR_BASE = 1900, MONTH_BASE = 1;
+	int currentYear, currentMonth, currentDay;
+	int calcYear, calcMonth, calcDay;
+	float calcYearDays, bioCycle = 23.0f, bioHalf = 11.5f;
+	float halfCycles;
+	
+	
+	currentYear = YEAR_BASE + ltm->tm_year;
+	currentMonth = MONTH_BASE + ltm->tm_mon;
+	currentDay = ltm->tm_mday;
+	
+	calcYear = currentYear - date_of_birth.year;
+	
+	cout<<endl<<currentYear
+		<<endl<<currentMonth
+		<<endl<<currentDay<<endl;
+		
+	calcYearDays = calcYear * 365;
+	
+	halfCycles = calcYearDays / bioHalf;
+	
+	float testday, fullpercentage = 1.0f, xpercentage = 0.5f, combinedpercentage;
+//	float adjustment = 10.0f;
+	bool cyclestate = true;
+	
+	testday = (xpercentage * bioHalf) / fullpercentage;
+	cout<< testday;
+}
