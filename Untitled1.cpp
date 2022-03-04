@@ -96,4 +96,9 @@ void test()
 	
 	testday = (xpercentage * bioHalf) / fullpercentage;
 	cout<< testday;
+	
+	testday = 5.75f;
+	xpercentage = (testday * fullpercentage) / bioHalf;
+	
+	cout<<endl<<xpercentage;
 }
